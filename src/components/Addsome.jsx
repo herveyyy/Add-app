@@ -1,22 +1,30 @@
-import React,{useState} from 'react';
-// import {
-//     addDoc,
-//     collection
-// } from 'firebase/firestore';
-// import { database } from './firebaseConfig';
-function Addsome(){
-    // const [name, setName] = useState('');
-    // const [course, setCourse] = useState('');
-    // const [year, setYear] = useState('');
-    // const databaseReference = collection(database, 'Student Data');
 
-    // const addData = () => {
-    //     addDoc(databaseReference, {
-    //         name: name,
-    //         course: course,
-    //         year: year
-    //     })
-    // }
+import {
+    addDoc,
+    collection
+} from 'firebase/firestore';
+import { database } from './firebaseConfig';
+import React,{useState} from 'react';
+export default function Addsome(){
+    const [name, setName] = useState('');
+    const [age, setAge] = useState('');
+    const [course, setCourse] = useState('');
+    const databaseReference = collection(database, 'Student');
+   
+    const addData = () => {
+        addDoc(databaseReference, {
+            name: name,
+            age: age,
+            course: course
+        })
+    }
+    const addAndClear = () => {
+        addData();
+        setName("");
+        setAge("");
+        setCourse("");
+        
+      };
     return(
 
 <div class="bg-white rounded-lg shadow sm:max-w-md sm:w-full sm:mx-auto sm:overflow-hidden">
@@ -36,22 +44,31 @@ function Addsome(){
             <div class="w-full space-y-6">
                 <div class="w-full">
                     <div class=" relative ">
-                        <input type="text" id="search-form-price" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Student Name"/>
+                        <input type="text" id="search-form-price" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Student Name"
+                         onChange={(event) => setName(event.target.value)}
+                        value={name}/>
                         </div>
                     </div>
                     <div class="w-full">
                         <div class=" relative ">
-                            <input type="text" id="search-form-location" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Age"/>
+                            <input type="text" id="search-form-location" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Age"
+                             onChange={(event) => setAge(event.target.value)}
+                            value={age}/>
                             </div>
                         </div>
                         <div class="w-full">
                             <div class=" relative ">
-                                <input type="text" id="search-form-name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Course"/>
+                                <input type="text" id="search-form-name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Course"
+                                 onChange={(event) => setCourse(event.target.value)}
+                                value={course}/>
                                 </div>
                             </div>
                             <div>
                                 <span class="block w-full rounded-md shadow-sm">
-                                    <button type="button" class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                    <button type="button" class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " 
+                                    onClick={addAndClear}
+                                    
+                                    >
                                         Add Student
                                     </button>
                                 </span>
@@ -68,5 +85,5 @@ function Addsome(){
 
 
     )
+    
 }
-export default Addsome;
