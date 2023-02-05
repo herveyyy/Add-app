@@ -27,6 +27,7 @@ function ContentList(){
                     <th class="border p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
                         Course
                     </th>
+                
                 </tr>
             </thead>
             <tbody>

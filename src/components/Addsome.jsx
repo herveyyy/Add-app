@@ -12,18 +12,19 @@ export default function Addsome(){
     const databaseReference = collection(database, 'Student');
    
     const addData = () => {
-        addDoc(databaseReference, {
-            name: name,
-            age: age,
-            course: course
-        })
+            addDoc(databaseReference, {
+                name: name,
+                age: age ,
+                course: course
+            })
+       
+            
     }
     const addAndClear = () => {
         addData();
         setName("");
         setAge("");
         setCourse("");
-        
       };
     return(
 
@@ -44,23 +45,24 @@ export default function Addsome(){
             <div class="w-full space-y-6">
                 <div class="w-full">
                     <div class=" relative ">
-                        <input type="text" id="search-form-price" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Student Name"
+                        <input type="text" id="setName" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Student Name"
                          onChange={(event) => setName(event.target.value)}
-                        value={name}/>
+                        value={""+name}
+                        />
                         </div>
                     </div>
                     <div class="w-full">
                         <div class=" relative ">
-                            <input type="text" id="search-form-location" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Age"
+                            <input type="text" id="setAge" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Age"
                              onChange={(event) => setAge(event.target.value)}
-                            value={age}/>
+                            value={""+age}/>
                             </div>
                         </div>
                         <div class="w-full">
                             <div class=" relative ">
-                                <input type="text" id="search-form-name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Course"
+                                <input type="text" id="setCourse" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Course"
                                  onChange={(event) => setCourse(event.target.value)}
-                                value={course}/>
+                                value={""+course}/>
                                 </div>
                             </div>
                             <div>
